@@ -1,0 +1,27 @@
+{
+  "name": "caremerge",
+  "version": "1.0.0",
+  "description": "Node introduction project",
+  "main": "server-cb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZakiMalik/Caremerge.git"
+  },
+  "author": "Zaki Malik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZakiMalik/Caremerge/issues"
+  },
+  "homepage": "https://github.com/ZakiMalik/Caremerge#readme",
+  "dependencies": {
+    "async": "^2.1.4",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "q": "^1.4.1",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
+  }
+}

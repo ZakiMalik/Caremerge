@@ -1,0 +1,12 @@
+<html>
+<head></head>
+<body>
+    <h1> Following are the titles of given websites: </h1>
+    <ul>
+      <!--Loop over each title provided and inject each individual title as a list element -->
+      <% titles.forEach(function(title) { %>
+        <li><%= title %></li>
+      <% }); %>
+    </ul>
+</body>
+</html>
