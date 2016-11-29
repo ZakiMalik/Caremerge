@@ -2,7 +2,7 @@
 
 This folder conatins the code files for the test task  [here]
 
-The following three control flows implemented were Callbacks, Promises and Async
+The three control flows implemented were Callbacks, Promises and Async
 
 
 
