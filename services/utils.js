@@ -63,8 +63,34 @@ var getPageTitlePromisified = function(addr, urlRegex, titleRegex){
   return deferred.promise;
 }
 
+/** This function initiates a call to the provided url and fetches and returns the page title
+* in case of no response or error (http statusCode >= 400 ) the title provided back is in the form <addr> - NO RESPONSE
+* The purpose of this function is to serve as an iteratee for async.map
+* @param addr: the url to request the page from
+* @param callback: the callback function
+* @returns title || errMessage
+*/
+var getPageTitleAsync = function(addr, callback){
+  var urlRegex = new RegExp (/^http:\/\//);
+  var titleRegex =  new RegExp (/<\s*title\s*>.*<\s*\/\s*title\s*>/);
+  var url = "" + addr;
+  if(!addr.match(urlRegex)){
+    url = "http://" + addr;
+  }
+  request(url, function( err, res, body){
+    if(err || res.statusCode >= 400){
+      callback(null, addr + ' - NO RESPONSE');
+    }else{
+      var match = body.toString().match(titleRegex)['0'];
+      match = match.replace(/<\s*title\s*>/,"");
+      match = match.replace(/<\s*\/\s*title\s*>/,"");
+      callback(null, addr + ' - "' + match + '"');
+    }
+  });
+}
 //--------- The file exports the following functions---------//
 module.exports = {
   getPageTitle: getPageTitle,
-  getPageTitlePromisified: getPageTitlePromisified
+  getPageTitlePromisified: getPageTitlePromisified,
+  getPageTitleAsync: getPageTitleAsync
 }
